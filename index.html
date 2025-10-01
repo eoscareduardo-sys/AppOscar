@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gestión de Ventas y Finanzas</title>
+    <link rel="stylesheet" href="index.css" />
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="theme-color" content="#1e1e1e" />
+    <script type="importmap">
+{
+  "imports": {
+    "safevalues/dom": "https://cdn.jsdelivr.net/npm/safevalues@1.2.0/dist/mjs/dom/index.js",
+    "safevalues": "https://cdn.jsdelivr.net/npm/safevalues@1.2.0/dist/mjs/index.js",
+    "markdown-it": "https://aistudiocdn.com/markdown-it@^14.1.0",
+    "safevalues/": "https://aistudiocdn.com/safevalues@^1.2.0/",
+    "sortablejs": "https://aistudiocdn.com/sortablejs@^1.15.6",
+    "@monaco-editor/loader": "https://aistudiocdn.com/@monaco-editor/loader@^1.5.0"
+  }
+}
+</script>
+  </head>
+  <body>
+    <header class="app-header">
+      <h1 id="header-title">Clientes</h1>
+    </header>
+
+    <main id="app-content"></main>
+
+    <nav id="bottom-nav">
+      <button data-page="clients" class="nav-btn active" aria-label="Clientes">
+        <i class="fas fa-users"></i>
+        <span>Clientes</span>
+      </button>
+      <button data-page="sales" class="nav-btn" aria-label="Ventas">
+        <i class="fas fa-cash-register"></i>
+        <span>Ventas</span>
+      </button>
+       <button data-page="inventory" class="nav-btn" aria-label="Inventario">
+        <i class="fas fa-boxes-stacked"></i>
+        <span>Inventario</span>
+      </button>
+      <button data-page="creditors" class="nav-btn" aria-label="Acreedores">
+        <i class="fas fa-receipt"></i>
+        <span>Acreedores</span>
+      </button>
+      <button data-page="expenses" class="nav-btn" aria-label="Gastos">
+        <i class="fas fa-wallet"></i>
+        <span>Gastos</span>
+      </button>
+      <button data-page="help" class="nav-btn" aria-label="Ayuda">
+        <i class="fas fa-circle-question"></i>
+        <span>Ayuda</span>
+      </button>
+    </nav>
+
+    <div id="modal-container" class="hidden"></div>
+    <script type="module" src="/index.tsx"></script>
+  </body>
+</html>

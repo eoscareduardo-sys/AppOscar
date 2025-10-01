@@ -1,0 +1,6 @@
+{
+  "name": "Gestión de Ventas y Finanzas",
+  "description": "Una aplicación móvil sencilla para vendedores de catálogo para llevar un control detallado de clientes, saldos de crédito y gastos personales. Funciona de forma local sin necesidad de internet.",
+  "requestFramePermissions": [],
+  "prompt": ""
+}

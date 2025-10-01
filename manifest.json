@@ -1,0 +1,85 @@
+{
+  "short_name": "Gestión",
+  "name": "Gestión de Ventas y Finanzas",
+  "description": "Una aplicación para llevar un control de clientes, saldos y gastos.",
+  "lang": "es-CO",
+  "dir": "ltr",
+  "id": "/?v=1",
+  "icons": [
+    {
+      "src": "/icon-192.svg",
+      "type": "image/svg+xml",
+      "sizes": "192x192",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon-512.svg",
+      "type": "image/svg+xml",
+      "sizes": "512x512",
+      "purpose": "any maskable"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#121212",
+  "display": "standalone",
+  "display_override": [
+    "window-controls-overlay"
+  ],
+  "scope": "/",
+  "theme_color": "#1e1e1e",
+  "orientation": "portrait",
+  "categories": ["business", "finance", "productivity"],
+  "prefer_related_applications": false,
+  "launch_handler": {
+    "client_mode": "navigate-existing"
+  },
+  "shortcuts": [
+    {
+      "name": "Nuevo Cliente",
+      "short_name": "Cliente",
+      "description": "Registrar un nuevo cliente",
+      "url": "/?action=new_client",
+      "icons": [{ "src": "/icon-192.svg", "sizes": "192x192" }]
+    },
+    {
+      "name": "Nueva Venta",
+      "short_name": "Venta",
+      "description": "Registrar una nueva venta",
+      "url": "/?action=new_sale",
+      "icons": [{ "src": "/icon-192.svg", "sizes": "192x192" }]
+    },
+    {
+      "name": "Nuevo Gasto",
+      "short_name": "Gasto",
+      "description": "Registrar un nuevo gasto",
+      "url": "/?action=new_expense",
+      "icons": [{ "src": "/icon-192.svg", "sizes": "192x192" }]
+    },
+    {
+      "name": "Nuevo Producto",
+      "short_name": "Producto",
+      "description": "Añadir producto al inventario",
+      "url": "/?action=new_product",
+      "icons": [{ "src": "/icon-192.svg", "sizes": "192x192" }]
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "images/screenshot1.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Lista de Clientes"
+    },
+    {
+      "src": "images/screenshot2.png",
+      "sizes": "1080x1920",
+      "type": "image/png",
+      "form_factor": "narrow",
+      "label": "Detalle de Cliente"
+    }
+  ],
+  "edge_side_panel": {
+    "preferred_width": 480
+  }
+}

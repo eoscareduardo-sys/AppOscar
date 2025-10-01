@@ -1,0 +1,405 @@
+@import url(https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css);
+
+:root {
+  --background-color: #121212;
+  --surface-color: #1e1e1e;
+  --primary-color: #bb86fc;
+  --primary-variant-color: #3700b3;
+  --secondary-color: #03dac6;
+  --on-background-color: #e0e0e0;
+  --on-surface-color: #ffffff;
+  --error-color: #cf6679;
+  --success-color: #4CAF50;
+  --debt-color: #ff7575; /* Used for both debt and error states for consistency */
+
+  /* PWA Window Controls Overlay variables */
+  --titlebar-area-x: env(titlebar-area-x, 0);
+  --titlebar-area-y: env(titlebar-area-y, 0);
+  --titlebar-area-width: env(titlebar-area-width, 100%);
+  --titlebar-area-height: env(titlebar-area-height, 0);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--on-background-color);
+  background-color: var(--background-color);
+}
+
+body {
+  padding-bottom: 70px; /* Space for bottom nav */
+}
+
+/* Header */
+.app-header {
+  background-color: var(--surface-color);
+  padding: 16px;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  border-bottom: 1px solid #2a2a2a;
+  /* Make the header draggable as part of the title bar */
+  -webkit-app-region: drag;
+  app-region: drag;
+   /* Add padding to the left to avoid the window controls */
+  padding-left: calc(var(--titlebar-area-x) + 16px);
+  padding-right: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.app-header h1 {
+    width: 100%;
+}
+
+.back-button {
+    background:none;
+    border:none;
+    color:inherit;
+    font-size:1.2em;
+    cursor:pointer;
+    margin-right: 10px;
+    position: absolute;
+    left: 16px;
+     /* Make buttons in the title bar clickable */
+    -webkit-app-region: no-drag;
+    app-region: no-drag;
+}
+
+
+/* Main Content */
+main {
+  padding: 16px;
+}
+
+.empty-state {
+  text-align: center;
+  margin-top: 40px;
+  color: #777;
+}
+
+.empty-state i {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.summary-card {
+  background-color: var(--surface-color);
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+.summary-card .total-debt,
+.summary-card .total-expense {
+  color: var(--debt-color);
+  font-size: 1.2em;
+}
+
+/* Search Bar & Filters */
+.month-select {
+  width: 100%;
+  padding: 12px;
+  background-color: var(--surface-color);
+  border: 1px solid #333;
+  border-radius: 8px;
+  color: var(--on-surface-color);
+  font-size: 16px;
+  margin-bottom: 16px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23e0e0e0' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+  background-size: 1em;
+  padding-right: 2.5rem;
+}
+
+.search-bar {
+  width: 100%;
+  padding: 12px;
+  background-color: var(--surface-color);
+  border: 1px solid #333;
+  border-radius: 8px;
+  color: var(--on-surface-color);
+  font-size: 16px;
+  margin-bottom: 16px;
+}
+
+/* Lists and Cards */
+.item-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.card {
+  background-color: var(--surface-color);
+  border-radius: 8px;
+  padding: 16px;
+  transition: background-color 0.2s;
+  border-left: 4px solid var(--primary-color);
+}
+
+.card.client-card, .card.creditor-card {
+  cursor: pointer;
+}
+
+.card.client-card:hover, .card.creditor-card:hover {
+  background-color: #2a2a2a;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.card-header > div {
+  display: flex;
+  align-items: center;
+}
+
+.card-title {
+  font-size: 1.1em;
+  font-weight: bold;
+  color: var(--on-surface-color);
+}
+
+.card-balance {
+  font-size: 1.1em;
+  font-weight: bold;
+}
+
+.card-balance.positive {
+  color: var(--success-color);
+}
+
+.card-balance.negative {
+  color: var(--debt-color);
+}
+
+.card-body {
+  color: #aaa;
+  font-size: 0.9em;
+}
+
+/* Bottom Navigation */
+#bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  background-color: var(--surface-color);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-top: 1px solid #2a2a2a;
+  z-index: 100;
+}
+
+.nav-btn {
+  background: none;
+  border: none;
+  color: #888;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  cursor: pointer;
+  font-size: 10px;
+  flex-grow: 1;
+  height: 100%;
+  text-align: center;
+}
+
+.nav-btn i {
+  font-size: 20px;
+}
+
+.nav-btn.active {
+  color: var(--primary-color);
+}
+
+/* Floating Action Button (FAB) */
+.fab {
+  position: fixed;
+  bottom: 80px;
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background-color: var(--primary-color);
+  color: #000;
+  border: none;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  z-index: 101;
+}
+
+/* Modal */
+#modal-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 200;
+  overflow-y: auto;
+  padding: 20px 0;
+}
+
+#modal-container.hidden {
+  display: none;
+}
+
+.modal-content {
+  background-color: var(--surface-color);
+  padding: 24px;
+  border-radius: 8px;
+  width: 90%;
+  max-width: 400px;
+  max-height: 95vh;
+  overflow-y: auto;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.modal-title {
+  font-size: 1.2em;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: var(--on-surface-color);
+  font-size: 24px;
+  cursor: pointer;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 8px;
+  color: #aaa;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 12px;
+  background-color: var(--background-color);
+  border: 1px solid #333;
+  border-radius: 4px;
+  color: var(--on-surface-color);
+  font-size: 16px;
+}
+
+.form-group input[readonly] {
+    background-color: #2a2a2a;
+    cursor: not-allowed;
+}
+
+fieldset {
+    border: 1px solid #333;
+    border-radius: 4px;
+    padding: 12px;
+    margin: 20px 0;
+}
+legend {
+    padding: 0 8px;
+    color: #aaa;
+}
+
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.btn {
+  padding: 10px 20px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: #000;
+}
+
+.btn-secondary {
+  background-color: #333;
+  color: var(--on-surface-color);
+}
+
+.btn-danger {
+  background-color: var(--error-color);
+  color: #000;
+}
+
+.client-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+    flex-wrap: wrap;
+}
+
+.icon-btn {
+    background: none;
+    border: none;
+    color: #888;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 12px;
+    padding: 4px;
+    transition: color 0.2s;
+}
+
+.icon-btn:hover {
+    color: var(--primary-color);
+}
+
+.icon-btn.icon-btn-delete:hover {
+    color: var(--error-color);
+}
+
+.hidden {
+    display: none;
+}
